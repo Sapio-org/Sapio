@@ -18,7 +18,7 @@ final List<ProfileCardModel> dummyProfiles = [
         "I’m a mathematician with a passion for algorithms and computing history.",
     skills: ["Algorithm Design", "Mathematics", "Writing"],
     openForCollaboration: true,
-    avatarIcon: "assets/landing.png",
+    avatarIcon: "assets/us1.jpg",
   ),
   ProfileCardModel(
     name: "Nikola Tesla",
@@ -35,7 +35,7 @@ final List<ProfileCardModel> dummyProfiles = [
         "I love creating futuristic inventions and exploring the power of electricity.",
     skills: ["Electrical Engineering", "Invention", "Problem Solving"],
     openForCollaboration: false,
-    avatarIcon: "assets/landing.png",
+    avatarIcon: "assets/us2.jpg",
   ),
   ProfileCardModel(
     name: "Marie Curie",
@@ -52,6 +52,6 @@ final List<ProfileCardModel> dummyProfiles = [
         "Passionate about scientific discovery, especially in radiation and chemistry.",
     skills: ["Research", "Chemistry", "Teaching"],
     openForCollaboration: true,
-    avatarIcon: "assets/landing.png",
+    avatarIcon: "assets/us3.jpg",
   ),
 ];

@@ -1,17 +1,107 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lucide_icons/lucide_icons.dart';
+import 'package:scapio/features/chats/screens/chat_screen.dart';
 import 'package:scapio/home/widgets/card_view.dart';
 import 'package:scapio/home/widgets/profile_card.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
   static const routeName = '/home';
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+  final List<Widget> _pages = [
+    CardView(),
+    Center(child: Text('For You Page', style: TextStyle(fontSize: 24))),
+    Center(child: Text('People Page', style: TextStyle(fontSize: 24))),
+    Center(child: Text('Liked You Page', style: TextStyle(fontSize: 24))),
+    ChatHomeScreen()
+  ];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: Column(
+          // Removes default padding
+          children: [
+            // Drawer Header
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(color: Colors.white),
+              accountEmail: Text(
+                'pranavajay2002@gmail.com',
+                style: TextStyle(color: Colors.black),
+              ),
+              accountName: Text(
+                'Pranav Ajay',
+                style: TextStyle(color: Colors.black),
+              ),
+              currentAccountPicture: CircleAvatar(
+                child: ClipOval(
+                  child: SvgPicture.asset(
+                    'assets/pfp.svg', // Replace with your SVG file path
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+            // Profile Option
+            ListTile(
+              leading: const Icon(LucideIcons.user2),
+              title: const Text('Profile'),
+              onTap: () {
+                // Navigate to Profile screen
+              },
+            ),
+            // Edit Profile Option
+            ListTile(
+              leading: const Icon(LucideIcons.edit3),
+              title: const Text('Edit Profile'),
+              onTap: () {
+                // Navigate to Edit Profile screen
+              },
+            ),
+            // Notifications Option
+            ListTile(
+              leading: const Icon(LucideIcons.bellDot),
+              title: const Text('Notifications'),
+              onTap: () {
+                // Navigate to Notifications screen
+              },
+            ),
+            // Personalities Option
+            ListTile(
+              leading: const Icon(LucideIcons.brain),
+              title: const Text('Personalities'),
+              onTap: () {
+                // Navigate to Personalities screen
+              },
+            ),
+            // Settings Option
+            ListTile(
+              leading: const Icon(LucideIcons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                // Navigate to Settings screen
+              },
+            ),
+            // Interests Option
+            ListTile(
+              leading: const Icon(LucideIcons.atom),
+              title: const Text('Interests'),
+              onTap: () {
+                // Navigate to Interests screen
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -26,42 +116,38 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.tune, color: Colors.black),
+            icon: const Icon(LucideIcons.settings2, color: Colors.black),
           ),
         ],
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          // Profile Card
-          Expanded(
-            child: CardView(),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: (int index) {
+          setState(() {
+            _selectedIndex = index; // Update the selected index
+          });
+        },
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(LucideIcons.galleryHorizontalEnd),
+            label: 'Match',
           ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.star),
+          NavigationDestination(
+            icon: Icon(LucideIcons.star),
             label: 'For You',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people),
+          NavigationDestination(
+            icon: Icon(LucideIcons.users),
             label: 'People',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+          NavigationDestination(
+            icon: Icon(LucideIcons.heart),
             label: 'Liked You',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
+          NavigationDestination(
+            icon: Icon(LucideIcons.messageCircle),
             label: 'Chats',
           ),
         ],
