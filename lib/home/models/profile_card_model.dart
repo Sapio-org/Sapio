@@ -3,14 +3,20 @@ import 'package:scapio/home/models/interest_model.dart';
 class ProfileCardModel {
   final String name;
   final int age;
-  final bool newHere; // Changed naming to follow camelCase
-  final String headline; // A brief "nerdy" description
-  final List<Interest> interests; // User's nerdy interests
-  final String location; // Location of the user
-  final String bio; // A short bio for more context
-  final List<String> skills; // List of key skills
-  final bool openForCollaboration; // Whether they're open to collaborate
-  final String avatarIcon; // Icon representing the user's persona (optional)
+  final bool newHere;
+  final String headline;
+  final List<Interest> interests;
+  final String location;
+  final String bio;
+  final List<String> skills;
+  final bool openForCollaboration;
+  final String avatarIcon;
+
+  // Optional fields
+  final String? gitProfile; // GitHub profile URL
+  final String? linkedInProfile; // LinkedIn profile URL
+  final List<String>? favoriteProjects; // List of favorite projects
+  final List<Map<String, String>>? promptsAndAnswers; // Prompts & answers
 
   ProfileCardModel({
     required this.name,
@@ -23,5 +29,9 @@ class ProfileCardModel {
     required this.skills,
     required this.openForCollaboration,
     required this.avatarIcon,
+    this.gitProfile,
+    this.linkedInProfile,
+    this.favoriteProjects,
+    required this.promptsAndAnswers,
   });
 }

@@ -19,6 +19,22 @@ final List<ProfileCardModel> dummyProfiles = [
     skills: ["Algorithm Design", "Mathematics", "Writing"],
     openForCollaboration: true,
     avatarIcon: "assets/us1.jpg",
+    gitProfile: "https://github.com/ada-lovelace",
+    linkedInProfile: "https://linkedin.com/in/adalovelace",
+    favoriteProjects: [
+      "Analytical Engine Algorithm",
+      "Mathematical Manuscripts",
+    ],
+    promptsAndAnswers: [
+      {
+        "prompt": "What inspires you?",
+        "answer": "The beauty of mathematics and its applications."
+      },
+      {
+        "prompt": "What’s a fun fact about you?",
+        "answer": "I wrote the first algorithm for a computer."
+      },
+    ],
   ),
   ProfileCardModel(
     name: "Nikola Tesla",
@@ -36,6 +52,22 @@ final List<ProfileCardModel> dummyProfiles = [
     skills: ["Electrical Engineering", "Invention", "Problem Solving"],
     openForCollaboration: false,
     avatarIcon: "assets/us2.jpg",
+    gitProfile: null, // Not provided
+    linkedInProfile: "https://linkedin.com/in/nikolatesla",
+    favoriteProjects: [
+      "Tesla Coil",
+      "AC Power System",
+    ],
+    promptsAndAnswers: [
+      {
+        "prompt": "What motivates you?",
+        "answer": "The quest to revolutionize energy systems."
+      },
+      {
+        "prompt": "What’s your dream project?",
+        "answer": "A wireless energy transmission system."
+      },
+    ],
   ),
   ProfileCardModel(
     name: "Marie Curie",
@@ -46,6 +78,8 @@ final List<ProfileCardModel> dummyProfiles = [
       Interest(name: "Chemistry", icon: Icons.science),
       Interest(name: "Physics", icon: Icons.bolt),
       Interest(name: "Research", icon: Icons.search),
+      Interest(name: "Research", icon: Icons.search),
+      Interest(name: "Research", icon: Icons.search),
     ],
     location: "Paris, France",
     bio:
@@ -53,5 +87,21 @@ final List<ProfileCardModel> dummyProfiles = [
     skills: ["Research", "Chemistry", "Teaching"],
     openForCollaboration: true,
     avatarIcon: "assets/us3.jpg",
+    gitProfile: "https://github.com/marie-curie",
+    linkedInProfile: null, // Not provided
+    favoriteProjects: [
+      "Radium Research",
+      "Polonium Studies",
+    ],
+    promptsAndAnswers: [
+      {
+        "prompt": "Why do you love research?",
+        "answer": "It unlocks the mysteries of the universe."
+      },
+      {
+        "prompt": "What’s your biggest accomplishment?",
+        "answer": "Winning two Nobel Prizes in different sciences."
+      },
+    ],
   ),
 ];

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import 'package:scapio/home/data/dummy_cards.dart';
 import 'package:scapio/home/widgets/profile_card.dart';
 
@@ -100,7 +101,7 @@ class _CardViewState extends State<CardView> {
         color: Colors.yellow.withOpacity(0.7),
       ),
       child: const Icon(
-        Icons.check,
+        LucideIcons.check,
         size: 60,
         color: Colors.black,
       ),
@@ -117,7 +118,7 @@ class _CardViewState extends State<CardView> {
         color: Colors.white.withOpacity(0.7),
       ),
       child: const Icon(
-        Icons.close,
+        LucideIcons.x,
         size: 60,
         color: Colors.black,
       ),
