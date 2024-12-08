@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scapio/home/models/interest_model.dart';
 import 'package:scapio/home/models/profile_card_model.dart';
+import 'package:scapio/home/models/project_model.dart';
+import 'package:scapio/home/models/about_me_model.dart';
 
 final List<ProfileCardModel> dummyProfiles = [
   ProfileCardModel(
@@ -19,11 +21,24 @@ final List<ProfileCardModel> dummyProfiles = [
     skills: ["Algorithm Design", "Mathematics", "Writing"],
     openForCollaboration: true,
     avatarIcon: "assets/us1.jpg",
+    aboutme: [
+      AboutMeChipModel(name: "🙎‍♀️ Woman"),
+      AboutMeChipModel(name: "🛕 Hindu"),
+      AboutMeChipModel(name: "💻 Tech Enthusiast"),
+      AboutMeChipModel(name: "🧮 Mathematician"),
+    ],
     gitProfile: "https://github.com/ada-lovelace",
     linkedInProfile: "https://linkedin.com/in/adalovelace",
     favoriteProjects: [
-      "Analytical Engine Algorithm",
-      "Mathematical Manuscripts",
+      Project(
+        name: "Analytical Engine Algorithm",
+        descr: "The first algorithm designed for Charles Babbage's machine.",
+      ),
+      Project(
+        name: "Mathematical Manuscripts",
+        descr:
+            "Compilation of mathematical insights and problem-solving techniques.",
+      ),
     ],
     promptsAndAnswers: [
       {
@@ -52,11 +67,23 @@ final List<ProfileCardModel> dummyProfiles = [
     skills: ["Electrical Engineering", "Invention", "Problem Solving"],
     openForCollaboration: false,
     avatarIcon: "assets/us2.jpg",
+    aboutme: [
+      AboutMeChipModel(name: "Man"),
+      AboutMeChipModel(name: "Inventor"),
+      AboutMeChipModel(name: "Innovator"),
+      AboutMeChipModel(name: "Serbian-American"),
+    ],
     gitProfile: null, // Not provided
     linkedInProfile: "https://linkedin.com/in/nikolatesla",
     favoriteProjects: [
-      "Tesla Coil",
-      "AC Power System",
+      Project(
+        name: "Tesla Coil",
+        descr: "A revolutionary device for wireless energy transmission.",
+      ),
+      Project(
+        name: "AC Power System",
+        descr: "Development of an efficient alternating current power system.",
+      ),
     ],
     promptsAndAnswers: [
       {
@@ -78,8 +105,6 @@ final List<ProfileCardModel> dummyProfiles = [
       Interest(name: "Chemistry", icon: Icons.science),
       Interest(name: "Physics", icon: Icons.bolt),
       Interest(name: "Research", icon: Icons.search),
-      Interest(name: "Research", icon: Icons.search),
-      Interest(name: "Research", icon: Icons.search),
     ],
     location: "Paris, France",
     bio:
@@ -87,11 +112,23 @@ final List<ProfileCardModel> dummyProfiles = [
     skills: ["Research", "Chemistry", "Teaching"],
     openForCollaboration: true,
     avatarIcon: "assets/us3.jpg",
+    aboutme: [
+      AboutMeChipModel(name: "Woman"),
+      AboutMeChipModel(name: "Scientist"),
+      AboutMeChipModel(name: "Mother"),
+      AboutMeChipModel(name: "Polish-French"),
+    ],
     gitProfile: "https://github.com/marie-curie",
     linkedInProfile: null, // Not provided
     favoriteProjects: [
-      "Radium Research",
-      "Polonium Studies",
+      Project(
+        name: "Radium Research",
+        descr: "Investigating the properties and applications of radium.",
+      ),
+      Project(
+        name: "Polonium Studies",
+        descr: "Groundbreaking work on the discovery and study of polonium.",
+      ),
     ],
     promptsAndAnswers: [
       {

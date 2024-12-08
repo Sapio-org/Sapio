@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scapio/features/chats/screens/group_screen.dart';
 
 class ChatHomeScreen extends StatelessWidget {
   const ChatHomeScreen({super.key});
@@ -14,7 +15,7 @@ class ChatHomeScreen extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: groupNames.length,
             itemBuilder: (context, index) {
-              return _buildGroupAvatar(groupNames[index]);
+              return _buildGroupAvatar(context, groupNames[index]);
             },
           ),
         ),
@@ -32,19 +33,30 @@ class ChatHomeScreen extends StatelessWidget {
     );
   }
 
-  // Builds each group avatar
-  Widget _buildGroupAvatar(String groupName) {
+  /// Builds each group avatar
+  Widget _buildGroupAvatar(BuildContext context, String groupName) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
         children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.grey[300],
-            child: const Icon(
-              Icons.group,
-              size: 32,
-              color: Colors.white,
+          InkWell(
+            onTap: () {
+              // Navigate to the respective group page dynamically
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => _getGroupPage(groupName),
+                ),
+              );
+            },
+            child: CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.grey[300],
+              child: const Icon(
+                Icons.group,
+                size: 32,
+                color: Colors.white,
+              ),
             ),
           ),
           const SizedBox(height: 8),
@@ -56,6 +68,20 @@ class ChatHomeScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  /// Returns the appropriate group page based on the group name
+  Widget _getGroupPage(String groupName) {
+    switch (groupName) {
+      case 'Flutter Developers':
+        return GroupScreen(groupName: groupName); // Example group page
+      case 'Tech Enthusiasts':
+        return GroupScreen(groupName: groupName);
+      case 'AI Researchers':
+        return GroupScreen(groupName: groupName);
+      default:
+        return GroupScreen(groupName: "General");
+    }
   }
 
   // Builds each chat item
@@ -101,11 +127,11 @@ class ChatHomeScreen extends StatelessWidget {
 
 // Dummy Data for Groups and Chats
 const List<String> groupNames = [
-  'Science Geeks',
-  'Philosophy Club',
-  'Math Wizards',
-  'AI Enthusiasts',
-  'Techies Unite',
+  'Science',
+  'Philosophy',
+  'Maths',
+  'AI',
+  'Linux',
 ];
 
 class Chat {

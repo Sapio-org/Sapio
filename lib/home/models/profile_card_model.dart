@@ -1,4 +1,6 @@
+import 'package:scapio/home/models/about_me_model.dart';
 import 'package:scapio/home/models/interest_model.dart';
+import 'package:scapio/home/models/project_model.dart';
 
 class ProfileCardModel {
   final String name;
@@ -11,11 +13,12 @@ class ProfileCardModel {
   final List<String> skills;
   final bool openForCollaboration;
   final String avatarIcon;
+  final List<AboutMeChipModel> aboutme; // Bumble-style "About Me" field
 
   // Optional fields
   final String? gitProfile; // GitHub profile URL
   final String? linkedInProfile; // LinkedIn profile URL
-  final List<String>? favoriteProjects; // List of favorite projects
+  final List<Project>? favoriteProjects; // List of favorite projects
   final List<Map<String, String>>? promptsAndAnswers; // Prompts & answers
 
   ProfileCardModel({
@@ -29,6 +32,7 @@ class ProfileCardModel {
     required this.skills,
     required this.openForCollaboration,
     required this.avatarIcon,
+    required this.aboutme, // "About Me" is now required
     this.gitProfile,
     this.linkedInProfile,
     this.favoriteProjects,

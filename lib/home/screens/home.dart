@@ -103,6 +103,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(
@@ -116,6 +117,10 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {},
+            icon: const Icon(LucideIcons.undo2, color: Colors.black),
+          ),
+          IconButton(
+            onPressed: () {},
             icon: const Icon(LucideIcons.settings2, color: Colors.black),
           ),
         ],
@@ -123,6 +128,8 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: NavigationBar(
+        indicatorColor: Colors.grey.withOpacity(0.3),
+        backgroundColor: Colors.white,
         selectedIndex: _selectedIndex,
         onDestinationSelected: (int index) {
           setState(() {

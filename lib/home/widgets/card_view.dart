@@ -108,7 +108,6 @@ class _CardViewState extends State<CardView> {
     );
   }
 
-  // Widget for Close Mark Animation
   Widget _buildCloseMarkAnimation() {
     return Container(
       width: 100,
