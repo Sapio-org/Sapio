@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:scapio/features/chats/screens/chat_screen.dart';
+import 'package:scapio/features/chats/screens/chat_home.dart';
+import 'package:scapio/features/chats/screens/group_screen.dart';
 import 'package:scapio/home/widgets/card_view.dart';
 import 'package:scapio/home/widgets/profile_card.dart';
 
@@ -19,8 +20,8 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     CardView(),
     Center(child: Text('For You Page', style: TextStyle(fontSize: 24))),
+    GroupScreen(),
     Center(child: Text('People Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Liked You Page', style: TextStyle(fontSize: 24))),
     ChatHomeScreen()
   ];
   @override
@@ -102,30 +103,32 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      appBar: AppBar(
-        surfaceTintColor: Colors.white,
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: const Text(
-          'SAPIO',
-          style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w300,
-              fontSize: 24,
-              letterSpacing: 2),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(LucideIcons.undo2, color: Colors.black),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(LucideIcons.settings2, color: Colors.black),
-          ),
-        ],
-        centerTitle: true,
-      ),
+      appBar: _selectedIndex == 0
+          ? AppBar(
+              surfaceTintColor: Colors.white,
+              elevation: 0,
+              backgroundColor: Colors.white,
+              title: const Text(
+                'SAPIO',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w300,
+                    fontSize: 24,
+                    letterSpacing: 2),
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(LucideIcons.undo2, color: Colors.black),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(LucideIcons.settings2, color: Colors.black),
+                ),
+              ],
+              centerTitle: true,
+            )
+          : null,
       body: _pages[_selectedIndex],
       bottomNavigationBar: NavigationBar(
         indicatorColor: Colors.grey.withOpacity(0.3),
@@ -147,7 +150,7 @@ class _HomePageState extends State<HomePage> {
           ),
           NavigationDestination(
             icon: Icon(LucideIcons.users),
-            label: 'People',
+            label: 'Community',
           ),
           NavigationDestination(
             icon: Icon(LucideIcons.heart),

@@ -13,7 +13,7 @@ class CardView extends StatefulWidget {
 
 class _CardViewState extends State<CardView> {
   final CardSwiperController controller = CardSwiperController();
-  final cards = dummyProfiles;
+  final profile_cards = dummyProfiles;
 
   // State variables for animations
   bool showCheckAnimation = false;
@@ -64,14 +64,14 @@ class _CardViewState extends State<CardView> {
           //   _triggerAnimation(direction);
           //   return Future.value(true); // Allow the swipe to proceed
           // },
-          cardsCount: cards.length,
+          cardsCount: profile_cards.length,
           cardBuilder: (
             context,
             index,
             horizontalThresholdPercentage,
             verticalThresholdPercentage,
           ) =>
-              ProfileCard(profile: cards[index]),
+              ProfileCard(profile: profile_cards[index]),
         ),
         // Check animation
         if (showCheckAnimation)

@@ -1,139 +1,154 @@
 import 'package:flutter/material.dart';
-import 'package:scapio/features/chats/screens/group_screen.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
-class ChatHomeScreen extends StatelessWidget {
-  const ChatHomeScreen({super.key});
+class ChatScreen extends StatelessWidget {
+  final Chat chat;
+
+  const ChatScreen({super.key, required this.chat});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // Horizontally scrollable group avatars
-        SizedBox(
-          height: 100, // Adjust height for avatars
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: groupNames.length,
-            itemBuilder: (context, index) {
-              return _buildGroupAvatar(context, groupNames[index]);
-            },
-          ),
-        ),
-        const Divider(), // Divider between avatars and chats
-        // Chat list
-        Expanded(
-          child: ListView.builder(
-            itemCount: chatList.length,
-            itemBuilder: (context, index) {
-              return _buildChatItem(chatList[index]);
-            },
-          ),
-        ),
-      ],
-    );
-  }
-
-  /// Builds each group avatar
-  Widget _buildGroupAvatar(BuildContext context, String groupName) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Column(
-        children: [
-          InkWell(
-            onTap: () {
-              // Navigate to the respective group page dynamically
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => _getGroupPage(groupName),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 1,
+        title: Row(
+          children: [
+            CircleAvatar(
+              backgroundImage: AssetImage(chat.profileImage),
+            ),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  chat.name,
+                  style: const TextStyle(color: Colors.black),
                 ),
-              );
-            },
-            child: CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.grey[300],
-              child: const Icon(
-                Icons.group,
-                size: 32,
-                color: Colors.white,
-              ),
+                Text(
+                  '${chat.name} is currently focused on work', // Example status text
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            groupName,
-            style: const TextStyle(fontSize: 14),
-            overflow: TextOverflow.ellipsis,
+          ],
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.more_vert, color: Colors.black),
+            onPressed: () {},
           ),
         ],
       ),
-    );
-  }
-
-  /// Returns the appropriate group page based on the group name
-  Widget _getGroupPage(String groupName) {
-    switch (groupName) {
-      case 'Flutter Developers':
-        return GroupScreen(groupName: groupName); // Example group page
-      case 'Tech Enthusiasts':
-        return GroupScreen(groupName: groupName);
-      case 'AI Researchers':
-        return GroupScreen(groupName: groupName);
-      default:
-        return GroupScreen(groupName: "General");
-    }
-  }
-
-  // Builds each chat item
-  Widget _buildChatItem(Chat chat) {
-    return ListTile(
-      leading: CircleAvatar(
-        radius: 24,
-        backgroundImage: AssetImage(chat.profileImage),
-      ),
-      title: Text(
-        chat.name,
-      ),
-      subtitle:
-          Text(chat.lastMessage, maxLines: 1, overflow: TextOverflow.ellipsis),
-      trailing: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Column(
         children: [
-          Text(
-            chat.time,
-            style: const TextStyle(fontSize: 12, color: Colors.grey),
-          ),
-          if (chat.unreadCount > 0)
-            Container(
-              margin: const EdgeInsets.only(top: 4),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(
-                color: Colors.purple,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                '${chat.unreadCount}',
-                style: const TextStyle(color: Colors.white, fontSize: 12),
+          Expanded(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '🎯',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 46),
+                  ),
+                  Text(
+                    '${chat.name} is currently focused on work',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: const Text(
+                      'We respect a Bizzy Bee and think hard work\n'
+                      'deserves a round of applause. Don’t hate the hustle 👏',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
               ),
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton.icon(
+                  icon: const Text(
+                    '👋',
+                    style: TextStyle(fontSize: 22),
+                  ),
+                  label: const Text('Send a GIF'),
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: const Color.fromARGB(255, 73, 47, 47),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                ElevatedButton.icon(
+                  icon: const Icon(LucideIcons.gamepad2, size: 20),
+                  label: const Text('Question Game'),
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Row(
+                children: [
+                  IconButton(
+                    icon: const Icon(LucideIcons.camera, color: Colors.black),
+                    onPressed: () {},
+                  ),
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Type a message',
+                        filled: true,
+                        fillColor: Colors.grey.shade200,
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.send, color: Colors.blue),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
-      onTap: () {
-        // Navigate to chat screen
-      },
     );
   }
 }
 
-// Dummy Data for Groups and Chats
-const List<String> groupNames = [
-  'Science',
-  'Philosophy',
-  'Maths',
-  'AI',
-  'Linux',
-];
-
+// Dummy Data for Chats
 class Chat {
   final String name;
   final String profileImage;
