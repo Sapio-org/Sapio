@@ -12,7 +12,8 @@ class ChatScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 1,
+        elevation: 0,
+        // shadowColor: Colors.grey,
         title: Row(
           children: [
             CircleAvatar(
@@ -24,7 +25,7 @@ class ChatScreen extends StatelessWidget {
               children: [
                 Text(
                   chat.name,
-                  style: const TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black, fontSize: 20),
                 ),
                 Text(
                   '${chat.name} is currently focused on work', // Example status text

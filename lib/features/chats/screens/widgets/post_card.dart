@@ -17,6 +17,7 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 4,
       color: Colors.white,
       margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
       child: SizedBox(

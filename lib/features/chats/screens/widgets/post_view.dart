@@ -27,6 +27,7 @@ class _PostViewState extends State<PostView> {
   @override
   Widget build(BuildContext context) {
     return CardSwiper(
+      numberOfCardsDisplayed: 3,
       padding: EdgeInsets.all(7),
       backCardOffset: const Offset(40, -10),
       allowedSwipeDirection: AllowedSwipeDirection.symmetric(horizontal: true),
