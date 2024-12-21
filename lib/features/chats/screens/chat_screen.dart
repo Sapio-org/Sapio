@@ -97,8 +97,11 @@ class ChatScreen extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 ElevatedButton.icon(
-                  icon: const Icon(LucideIcons.gamepad2, size: 20),
-                  label: const Text('Question Game'),
+                  icon: const Text(
+                    '🎲',
+                    style: TextStyle(fontSize: 22),
+                  ),
+                  label: const Text(' Question Game'),
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
@@ -136,7 +139,7 @@ class ChatScreen extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.send, color: Colors.blue),
+                    icon: const Icon(LucideIcons.send, color: Colors.black),
                     onPressed: () {},
                   ),
                 ],

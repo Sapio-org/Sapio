@@ -130,37 +130,48 @@ class _HomePageState extends State<HomePage> {
             )
           : null,
       body: _pages[_selectedIndex],
-      bottomNavigationBar: NavigationBar(
-        indicatorColor: Colors.grey.withOpacity(0.3),
-        backgroundColor: Colors.white,
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: (int index) {
-          setState(() {
-            _selectedIndex = index; // Update the selected index
-          });
-        },
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(LucideIcons.galleryHorizontalEnd),
-            label: 'Match',
-          ),
-          NavigationDestination(
-            icon: Icon(LucideIcons.star),
-            label: 'For You',
-          ),
-          NavigationDestination(
-            icon: Icon(LucideIcons.users),
-            label: 'Community',
-          ),
-          NavigationDestination(
-            icon: Icon(LucideIcons.heart),
-            label: 'Liked You',
-          ),
-          NavigationDestination(
-            icon: Icon(LucideIcons.messageCircle),
-            label: 'Chats',
-          ),
-        ],
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          splashColor: Colors.transparent, // Disable splash animation
+          highlightColor: Colors.transparent, // Disable highlight animation
+        ),
+        child: BottomNavigationBar(
+          selectedFontSize: 12,
+          unselectedFontSize: 10,
+          currentIndex: _selectedIndex, // Set the current selected index
+          onTap: (int index) {
+            setState(() {
+              _selectedIndex = index; // Update the selected index
+            });
+          },
+          type: BottomNavigationBarType
+              .fixed, // To ensure all icons are displayed
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(LucideIcons.galleryHorizontalEnd),
+              label: 'Match',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(LucideIcons.star),
+              label: 'For You',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(LucideIcons.users),
+              label: 'Community',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(LucideIcons.heart),
+              label: 'Liked You',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(LucideIcons.messageCircle),
+              label: 'Chats',
+            ),
+          ],
+          selectedItemColor: Colors.black, // Customize selected item color
+          unselectedItemColor: Colors.grey, // Customize unselected item color
+          backgroundColor: Colors.white, // Set background color
+        ),
       ),
     );
   }
